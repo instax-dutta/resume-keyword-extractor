@@ -118,6 +118,34 @@ python resume_keyword_extractor.py [RESUME_FILE]
    - Preserves bullet points and numbered lists
    - Handles embedded tables and text boxes
 
+## Deploying as an API on Vercel
+
+This project can be deployed as a serverless API on [Vercel](https://vercel.com/) using the `/api/extract.py` endpoint.
+
+### Usage
+- **Endpoint:** `/api/extract`
+- **Method:** `POST`
+- **Content-Type:** `multipart/form-data`
+- **Form field:** `file` (PDF or DOCX)
+- **Response:** JSON with extracted keywords (customize logic as needed)
+
+### Example (using curl)
+```sh
+curl -X POST https://<your-vercel-deployment-url>/api/extract \
+  -F "file=@/path/to/resume.pdf"
+```
+
+### Vercel Deployment Steps
+1. **Push this repo to GitHub/GitLab.**
+2. **Connect your repo to Vercel.**
+3. **Set Python as the runtime for `/api/extract.py`.**
+4. **Ensure `requirements.txt` is present in the root.**
+5. **Deploy!**
+
+---
+
+**Note:** The `/api/extract.py` API uses a minimal keyword extraction for demonstration. Replace the logic with your full `ResumeKeywordExtractor` class for production use.
+
 ## Troubleshooting
 
 ### Common Issues and Solutions
